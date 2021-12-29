@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 
-namespace TestProject2
+namespace UnitTests
 {
     [TestClass]
     public class UnitTest1
@@ -76,7 +76,7 @@ namespace TestProject2
             {
                 Assert.AreEqual(m1, deserializedData.MYLIST1[index]);
             }
-            foreach(var (m2, index) in originalData.MYLIST2.WithIndex())
+            foreach (var (m2, index) in originalData.MYLIST2.WithIndex())
             {
                 Assert.AreEqual(m2.DATETIME, deserializedData.MYLIST2[index].DATETIME);
                 Assert.AreEqual(m2.DATETIMEOFFSET, deserializedData.MYLIST2[index].DATETIMEOFFSET);
