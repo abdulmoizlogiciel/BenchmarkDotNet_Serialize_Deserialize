@@ -16,7 +16,7 @@ namespace ConsoleAppNC_BenchmarkDotNet
         [GlobalSetup]
         public void Global_Setup()
         {
-            string serialized = Util.ReadSerializedDataByFileName("JsonWithNestedListOf1000.txt");
+            string serialized = Util.ReadSerializedDataFromFileName("JsonWithNestedListOf1000.json.txt");
             Data = Newtonsoft.Json.JsonConvert.DeserializeObject<ExpandoObject>(serialized);
         }
 

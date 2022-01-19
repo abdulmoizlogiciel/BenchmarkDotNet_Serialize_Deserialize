@@ -16,7 +16,7 @@ namespace ConsoleAppNC_BenchmarkDotNet
 
         public Benchmark_Deserialization1()
         {
-            DataJsonString = Util.ReadSerializedDataByFileName("JsonWithNestedListOf35.txt");
+            DataJsonString = Util.ReadSerializedDataFromFileName("JsonWithNestedListOf35.json.txt");
 
             var expando = Newtonsoft.Json.JsonConvert.DeserializeObject<ExpandoObject>(DataJsonString);
             DataByteArray = Utf8Json.JsonSerializer.Serialize(expando);
