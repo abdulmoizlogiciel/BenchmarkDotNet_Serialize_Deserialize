@@ -7,8 +7,10 @@ namespace ConsoleAppNC_BenchmarkDotNet
     {
         static void Main(string[] args)
         {
+            BenchmarkRunner.Run<BenchmarkXorVsNot>();
+
             //new Benchmark_Serialization().Global_Setup();
-            BenchmarkRunner.Run<Benchmark_Serialization>();
+            //BenchmarkRunner.Run<BenchmarkArrayVsList>();
 
             //BenchmarkRunner.Run<Benchmark_Serialization2>();
             //new Benchmark_Serialization2();
