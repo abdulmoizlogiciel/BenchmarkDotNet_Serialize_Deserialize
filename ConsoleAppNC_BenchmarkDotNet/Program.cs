@@ -7,10 +7,20 @@ namespace ConsoleAppNC_BenchmarkDotNet
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<BenchmarkXorVsNot>();
+            //var a = new Benchmark_ExpandoToDto2();
+            //a.Global_Setup();
+            //var b = a.Newtonsoft_Json_JsonConvert_SerializeObject();
+            //var cd = a.Utf8Json_JsonSerializer_Serialize();
+            //var d = a.System_Text_Json_JsonSerializer_Serialize();
+
+            //new Benchmark_CastVsAs().CastAsWithError();
+
+            BenchmarkRunner.Run<Benchmark_CastVsAs>();
 
             //new Benchmark_Serialization().Global_Setup();
-            //BenchmarkRunner.Run<BenchmarkArrayVsList>();
+            //BenchmarkRunner.Run<Benchmark_Serialization>();
+
+            //BenchmarkRunner.Run<BenchmarkXorVsNot>();
 
             //BenchmarkRunner.Run<Benchmark_Serialization2>();
             //new Benchmark_Serialization2();

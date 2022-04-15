@@ -13,14 +13,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\JsonWithNestedListOf6.txt">
+    <None Update="Data\JsonWithNestedListOf6.json.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data\JsonWithNestedListOf35.txt">
+    <None Update="Data\JsonWithNestedListOf35.json.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data\JsonWithNestedListOf1000.txt">
+    <None Update="Data\JsonWithNestedListOf1000.json.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\SubscriptionOrdersCount34.json.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
