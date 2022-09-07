@@ -15,7 +15,7 @@ namespace ConsoleAppNC_BenchmarkDotNet
 
             //new Benchmark_CastVsAs().CastAsWithError();
 
-            BenchmarkRunner.Run<Benchmark_ParseOrderMessageRegexCached>();
+            BenchmarkRunner.Run<Benchmark_StringComparison>();
 
             //new Benchmark_Serialization().Global_Setup();
             //BenchmarkRunner.Run<Benchmark_Serialization>();
