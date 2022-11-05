@@ -1,5 +1,7 @@
 ﻿using BenchmarkDotNet.Running;
 using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 
 namespace ConsoleAppNC_BenchmarkDotNet
@@ -8,6 +10,12 @@ namespace ConsoleAppNC_BenchmarkDotNet
     {
         static void Main(string[] args)
         {
+            //IDictionary<string, object> expandoAsDictionary = new ExpandoObject();
+            //IDictionary<string, object> expandoAsDictionary = new Dictionary<string, object>();
+            //expandoAsDictionary.Add("Prop 1", "StringProp");
+            //expandoAsDictionary.Add("Prop 2", 1);
+            //ExpandoObject result = (ExpandoObject)expandoAsDictionary;
+
             //var a = new Benchmark_ExpandoToDto2();
             //a.Global_Setup();
             //var b = a.Newtonsoft_Json_JsonConvert_SerializeObject();
@@ -30,7 +38,7 @@ namespace ConsoleAppNC_BenchmarkDotNet
             //    .Sum();
             //Console.WriteLine(sum / total);
 
-            BenchmarkRunner.Run<Benchmark_ConnectionLocks>();
+            BenchmarkRunner.Run<Benchmark_IDictionaryVsExpandoObject>();
 
             //new Benchmark_Serialization().Global_Setup();
             //BenchmarkRunner.Run<Benchmark_Serialization>();
