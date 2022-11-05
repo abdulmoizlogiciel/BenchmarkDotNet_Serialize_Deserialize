@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Running;
 using System;
+using System.Linq;
 
 namespace ConsoleAppNC_BenchmarkDotNet
 {
@@ -14,8 +15,22 @@ namespace ConsoleAppNC_BenchmarkDotNet
             //var d = a.System_Text_Json_JsonSerializer_Serialize();
 
             //new Benchmark_CastVsAs().CastAsWithError();
+            //int total = 15;
 
-            BenchmarkRunner.Run<Benchmark_StringComparison>();
+            //Benchmark_ConnectionLocks.CheckTimeWithIndividualUsersLocks();
+            //long sum = Enumerable
+            //    .Range(1, total)
+            //    .Select(_ => Benchmark_ConnectionLocks.CheckTimeWithIndividualUsersLocks())
+            //    .Sum();
+            //Console.WriteLine(sum / total);
+
+            //long sum = Enumerable
+            //    .Range(1, total)
+            //    .Select(_ => Benchmark_ConnectionLocks.CheckTimeWithSingleLockForAllUsers())
+            //    .Sum();
+            //Console.WriteLine(sum / total);
+
+            BenchmarkRunner.Run<Benchmark_ConnectionLocks>();
 
             //new Benchmark_Serialization().Global_Setup();
             //BenchmarkRunner.Run<Benchmark_Serialization>();
