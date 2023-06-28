@@ -38,7 +38,7 @@ namespace ConsoleAppNC_BenchmarkDotNet
             //    .Sum();
             //Console.WriteLine(sum / total);
 
-            BenchmarkRunner.Run<Benchmark_IDictionaryVsExpandoObject>();
+            BenchmarkRunner.Run<Benchmark_IEnumerableVsICollection>();
 
             //new Benchmark_Serialization().Global_Setup();
             //BenchmarkRunner.Run<Benchmark_Serialization>();
