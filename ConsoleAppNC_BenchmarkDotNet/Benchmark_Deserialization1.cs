@@ -11,7 +11,7 @@ namespace ConsoleAppNC_BenchmarkDotNet
     [Config(typeof(BenchmarkConfig))]
     public class Benchmark_Deserialization1
     {
-        private string DataJsonString;
+        private readonly string DataJsonString;
         private readonly byte[] DataByteArray;
 
         public Benchmark_Deserialization1()

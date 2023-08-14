@@ -15,7 +15,6 @@ namespace ConsoleAppNC_BenchmarkDotNet
     {
         private readonly Regex regex = new(@".*");
         private readonly List<string> list = new() { "asdf", "asdf", "asdf", "asdf", };
-        private readonly bool BoolField;
 
         [Benchmark(Baseline = true)]
         public bool Not()
