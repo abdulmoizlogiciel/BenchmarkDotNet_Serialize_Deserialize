@@ -13,8 +13,9 @@ namespace ConsoleAppNC_BenchmarkDotNet
     [Config(typeof(BenchmarkConfig))]
     public class BenchmarkXorVsNot
     {
-        private readonly Regex regex = new(@".*");
-        private readonly List<string> list = new() { "asdf", "asdf", "asdf", "asdf", };
+        private readonly List<string> list = new List<string>() { "asdf", "asdf", "asdf", "asdf", };
+        private readonly Regex regex = new Regex(@".*");
+        private readonly bool BoolField;
 
         [Benchmark(Baseline = true)]
         public bool Not()
