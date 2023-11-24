@@ -12,8 +12,9 @@ namespace ConsoleAppNC_BenchmarkDotNet
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [Config(typeof(BenchmarkConfig))]
-    public class Benchmark_IE
+    public class Benchmark_SerializeToStringVsSerializeToUtf8Bytes
     {
+        private static readonly MarketL1Data SDataObj = new MarketL1Data();
         private static readonly JsonSerializerOptions SJsonSerializerOptions = new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -21,19 +22,17 @@ namespace ConsoleAppNC_BenchmarkDotNet
         };
 
         [Benchmark(Description = "SerializeToUtf8Bytes")]
-        public void SerializeToUtf8Bytes()
+        public ArraySegment<byte> SerializeToUtf8Bytes()
         {
-            var obj = new MarketL1Data();
-            var bytes = JsonSerializer.SerializeToUtf8Bytes(obj, SJsonSerializerOptions);
-            var arraySegment = new ArraySegment<byte>(bytes);
+            var bytes = JsonSerializer.SerializeToUtf8Bytes(SDataObj, SJsonSerializerOptions);
+            return new ArraySegment<byte>(bytes);
         }
 
-        [Benchmark(Description = "SerializeToString_Then_Encoding_UTF8_GetBytes")]
-        public void SerializeToString_Then_Encoding_UTF8_GetBytes()
+        [Benchmark(Description = "SerializeToString_Then_Encoding_Default_GetBytes", Baseline = true)]
+        public ArraySegment<byte> SerializeToString_Then_Encoding_Default_GetBytes()
         {
-            var obj = new MarketL1Data();
-            var bytes = JsonSerializer.Serialize(obj, SJsonSerializerOptions);
-            var arraySegment = new ArraySegment<byte>(Encoding.UTF8.GetBytes(bytes));
+            var bytes = JsonSerializer.Serialize(SDataObj, SJsonSerializerOptions);
+            return new ArraySegment<byte>(Encoding.Default.GetBytes(bytes));
         }
     }
 
