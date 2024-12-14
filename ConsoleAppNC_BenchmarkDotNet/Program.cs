@@ -37,8 +37,7 @@ namespace ConsoleAppNC_BenchmarkDotNet
             //    .Select(_ => Benchmark_ConnectionLocks.CheckTimeWithSingleLockForAllUsers())
             //    .Sum();
             //Console.WriteLine(sum / total);
-
-            BenchmarkRunner.Run<Benchmark_IEnumerableVsICollection>();
+            BenchmarkRunner.Run<ConvertToDateTimeVsParseDateTime>();
 
             //new Benchmark_Serialization().Global_Setup();
             //BenchmarkRunner.Run<Benchmark_Serialization>();
