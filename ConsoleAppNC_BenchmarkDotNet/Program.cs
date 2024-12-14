@@ -38,7 +38,7 @@ namespace ConsoleAppNC_BenchmarkDotNet
             //    .Sum();
             //Console.WriteLine(sum / total);
 
-            BenchmarkRunner.Run<Benchmark_SerializeToStringVsSerializeToUtf8Bytes>();
+            BenchmarkRunner.Run<Benchmark_StringCompareVSUnboxIntegerCompare>();
 
             //new Benchmark_Serialization().Global_Setup();
             //BenchmarkRunner.Run<Benchmark_Serialization>();
