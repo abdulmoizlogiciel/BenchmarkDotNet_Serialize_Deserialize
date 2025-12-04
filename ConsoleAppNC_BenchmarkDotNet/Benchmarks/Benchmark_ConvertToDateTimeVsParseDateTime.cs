@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 
-namespace ConsoleAppNC_BenchmarkDotNet
+namespace ConsoleAppNC_BenchmarkDotNet.Benchmarks
 {
     [MemoryDiagnoser]
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]

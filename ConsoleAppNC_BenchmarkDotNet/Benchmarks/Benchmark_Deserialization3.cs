@@ -2,7 +2,7 @@
 using BenchmarkDotNet.Order;
 using ConsoleAppNC_BenchmarkDotNet.Models;
 
-namespace ConsoleAppNC_BenchmarkDotNet
+namespace ConsoleAppNC_BenchmarkDotNet.Benchmarks
 {
     [MemoryDiagnoser]
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]

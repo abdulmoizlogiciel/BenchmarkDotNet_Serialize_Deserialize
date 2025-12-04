@@ -1,4 +1,5 @@
 using ConsoleAppNC_BenchmarkDotNet;
+using ConsoleAppNC_BenchmarkDotNet.Benchmarks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

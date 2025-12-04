@@ -2,7 +2,7 @@
 using System.Dynamic;
 using System.Linq;
 
-namespace ConsoleAppNC_BenchmarkDotNet
+namespace ConsoleAppNC_BenchmarkDotNet.Benchmarks
 {
     public static class Extensions
     {

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 
-namespace ConsoleAppNC_BenchmarkDotNet
+namespace ConsoleAppNC_BenchmarkDotNet.Benchmarks
 {
     [MemoryDiagnoser]
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
@@ -21,8 +21,8 @@ namespace ConsoleAppNC_BenchmarkDotNet
         {
             dynamic data = new ExpandoObject();
 
-            data.INT = (int)321783498;
-            data.LONG = (long)3217834983217834983;
+            data.INT = 321783498;
+            data.LONG = 3217834983217834983;
             data.DOUBLE = (double)2.45678;
             data.STRING = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhNTEyIiwidHlwIjoiSldUIn0.eyJzdWIiOiJzY290dCIsIk9UUCI6InpjeWlZY2U0eGlFeXpsRXBQeXYxNHVlMlQ2bTlGWk9EIiwiZXhwIjoxNjM4ODYzOTU2LCJpYXQiOjE2Mzg4NjM2NTYsIm5iZiI6MTYzODg2MzY1Nn0.hPhmN-3UnXkdPKHaVqHkraCVs-KWNtScbptln-19cxl7WDTzm8MaxiRyB5p1b5bQ3-6Lir5o4KoejNNc-glZ7at2CrgX6ekSiVVe1uIBibLRvHsr0xUWKRnh-6wwdHcb4WrHerVgU3KxLl6ATYW1eMFRSuGqxlHthWUzykunJN3oW92ZUGsFIhZyWY5pbSA5plt0z72_FUYPDhxDm0sYpN1LIgw0lMhx9N933TodP4j9oGUWpQRtWmqcoYUwBPW3z2x2HqzzTz1cDoB2ypFCoJY4sSlc3E3cHRTXGBiyCFHMFOy6KfS--ZEFSj-upxPnv57XS2pT_WcTSNi4OAOpdA";
             data.DATETIME = DateTime.Parse("2021-12-18T06:07:55.602Z");

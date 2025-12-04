@@ -1,7 +1,9 @@
 ﻿using BenchmarkDotNet.Running;
+using ConsoleAppNC_BenchmarkDotNet.Benchmarks;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
 
 namespace ConsoleAppNC_BenchmarkDotNet
@@ -10,6 +12,7 @@ namespace ConsoleAppNC_BenchmarkDotNet
     {
         static void Main(string[] args)
         {
+            BenchmarkRunner.Run<Benchmark_StringCompareVSUnboxIntegerCompare>();
             //IDictionary<string, object> expandoAsDictionary = new ExpandoObject();
             //IDictionary<string, object> expandoAsDictionary = new Dictionary<string, object>();
             //expandoAsDictionary.Add("Prop 1", "StringProp");
@@ -37,8 +40,6 @@ namespace ConsoleAppNC_BenchmarkDotNet
             //    .Select(_ => Benchmark_ConnectionLocks.CheckTimeWithSingleLockForAllUsers())
             //    .Sum();
             //Console.WriteLine(sum / total);
-
-            BenchmarkRunner.Run<Benchmark_StringCompareVSUnboxIntegerCompare>();
 
             //new Benchmark_Serialization().Global_Setup();
             //BenchmarkRunner.Run<Benchmark_Serialization>();
