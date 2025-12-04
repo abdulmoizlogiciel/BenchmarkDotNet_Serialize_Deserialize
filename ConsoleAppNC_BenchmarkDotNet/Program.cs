@@ -12,7 +12,7 @@ namespace ConsoleAppNC_BenchmarkDotNet
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<Benchmark_StringCompareVSUnboxIntegerCompare>();
+            BenchmarkRunner.Run<Benchmark_ReplaceVsManualStringIteration>();
             //IDictionary<string, object> expandoAsDictionary = new ExpandoObject();
             //IDictionary<string, object> expandoAsDictionary = new Dictionary<string, object>();
             //expandoAsDictionary.Add("Prop 1", "StringProp");
