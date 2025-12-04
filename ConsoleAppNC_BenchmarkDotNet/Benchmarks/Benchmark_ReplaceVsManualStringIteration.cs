@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace ConsoleAppNC_BenchmarkDotNet.Benchmarks
 {
@@ -12,29 +13,52 @@ namespace ConsoleAppNC_BenchmarkDotNet.Benchmarks
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [Config(typeof(BenchmarkConfig))]
-    public class Benchmark_ReplaceVsManualStringIteration
+    public partial class Benchmark_ReplaceVsManualStringIteration
     {
-        private static readonly string _longStringMsg = new string('A', 200) + "\r\n";
+        [GeneratedRegex("[\r\n]")]
+        public static partial Regex MyRegex2();
 
-        [Benchmark(Description = ".NET's Replace", Baseline = true)]
-        public string Replace()
+        public static readonly string _longStringMsg = new string('A', 200) + "\r\n";
+        public static readonly Regex _regex = new Regex("[\r\n]", RegexOptions.Compiled);
+        public static readonly Regex _regex2 = MyRegex2();
+
+        [Benchmark(Description = ".NET's Replace Char", Baseline = true)]
+        public string ReplaceCharacter()
         {
             return _longStringMsg.Replace('\r', ' ').Replace('\n', ' ');
         }
 
-        [Benchmark(Description = "StringBuilderManualLoop")]
-        public string StringBuilderManualLoop()
+        [Benchmark(Description = ".NET's Replace String")]
+        public string ReplaceString()
         {
-            var builder = new StringBuilder();
-            for (int index = 0; index < _longStringMsg.Length; index++)
-            {
-                char currentChar = _longStringMsg[index];
-                if (currentChar != '\r' && currentChar != '\n')
-                {
-                    builder.Append(currentChar);
-                }
-            }
-            return builder.ToString();
+            return _longStringMsg.Replace("\r", "").Replace("\n", "");
+        }
+
+        //[Benchmark(Description = "StringBuilderManualLoop")]
+        //public string StringBuilderManualLoop()
+        //{
+        //    var builder = new StringBuilder();
+        //    for (int index = 0; index < _longStringMsg.Length; index++)
+        //    {
+        //        char currentChar = _longStringMsg[index];
+        //        if (currentChar != '\r' && currentChar != '\n')
+        //        {
+        //            builder.Append(currentChar);
+        //        }
+        //    }
+        //    return builder.ToString();
+        //}
+
+        [Benchmark(Description = "RegexReplace")]
+        public string RegexReplace()
+        {
+            return _regex.Replace(_longStringMsg, string.Empty);
+        }
+
+        [Benchmark(Description = "RegexReplace Generated Regex")]
+        public string RegexReplaceGeneratedRegex()
+        {
+            return _regex2.Replace(_longStringMsg, string.Empty);
         }
     }
 }
