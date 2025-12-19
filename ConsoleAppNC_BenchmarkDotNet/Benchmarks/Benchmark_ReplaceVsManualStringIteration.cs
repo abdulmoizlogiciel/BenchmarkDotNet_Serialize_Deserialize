@@ -18,7 +18,7 @@ namespace ConsoleAppNC_BenchmarkDotNet.Benchmarks
         [GeneratedRegex("[\r\n]")]
         public static partial Regex MyRegex2();
 
-        public static readonly string _longStringMsg = new string('A', 200) + "\r\n";
+        public static readonly string _longStringMsg = new string('A', 1000) + "\r\n";
         public static readonly Regex _regex = new Regex("[\r\n]", RegexOptions.Compiled);
         public static readonly Regex _regex2 = MyRegex2();
 
@@ -34,20 +34,39 @@ namespace ConsoleAppNC_BenchmarkDotNet.Benchmarks
             return _longStringMsg.Replace("\r", "").Replace("\n", "");
         }
 
-        //[Benchmark(Description = "StringBuilderManualLoop")]
-        //public string StringBuilderManualLoop()
-        //{
-        //    var builder = new StringBuilder();
-        //    for (int index = 0; index < _longStringMsg.Length; index++)
-        //    {
-        //        char currentChar = _longStringMsg[index];
-        //        if (currentChar != '\r' && currentChar != '\n')
-        //        {
-        //            builder.Append(currentChar);
-        //        }
-        //    }
-        //    return builder.ToString();
-        //}
+        [Benchmark(Description = "StringBuilderManualLoop")]
+        public string StringBuilderManualLoop()
+        {
+            var builder = new StringBuilder();
+            for (int index = 0; index < _longStringMsg.Length; index++)
+            {
+                char currentChar = _longStringMsg[index];
+                if (currentChar != '\r' && currentChar != '\n')
+                {
+                    builder.Append(currentChar);
+                }
+            }
+            return builder.ToString();
+        }
+
+        [Benchmark(Description = "SpanOptimized")]
+        public string SpanOptimized()
+        {
+            ReadOnlySpan<char> source = _longStringMsg.AsSpan();
+            Span<char> buffer = stackalloc char[source.Length];
+
+            int written = 0;
+            for (int i = 0; i < source.Length; i++)
+            {
+                char c = source[i];
+                if (c != '\r' && c != '\n')
+                {
+                    buffer[written++] = c;
+                }
+            }
+
+            return new string(buffer[..written]);
+        }
 
         [Benchmark(Description = "RegexReplace")]
         public string RegexReplace()
@@ -55,10 +74,10 @@ namespace ConsoleAppNC_BenchmarkDotNet.Benchmarks
             return _regex.Replace(_longStringMsg, string.Empty);
         }
 
-        [Benchmark(Description = "RegexReplace Generated Regex")]
-        public string RegexReplaceGeneratedRegex()
-        {
-            return _regex2.Replace(_longStringMsg, string.Empty);
-        }
+        //[Benchmark(Description = "RegexReplace Generated Regex")]
+        //public string RegexReplaceGeneratedRegex()
+        //{
+        //    return _regex2.Replace(_longStringMsg, string.Empty);
+        //}
     }
 }
